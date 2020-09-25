@@ -1,0 +1,6 @@
+"0",""
+"0","delay_sum <- as.data.frame(aggregate(`Min Delay` ~ Incident, ttc_delay, mean))"
+"0",""
+"0",""
+"0","delay_sum$Incident <- factor(delay_sum$Incident, levels = delay_sum$Incident[order(delay_sum$`Min Delay`, decreasing = TRUE)])"
+"0","kable(delay_sum) %>% kable_styling(position = ""center"")"

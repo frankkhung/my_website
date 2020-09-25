@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1600700148194.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DE38C8A2",
+    "lastKnownWriteTime" : 1600696533,
+    "last_content_update" : 1600696533,
+    "path" : "~/Documents/FHDocument/2020_2021/STA304/Assignments/Assignment 1/Assignment_1.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "47,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 14,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

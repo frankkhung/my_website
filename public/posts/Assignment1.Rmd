@@ -72,7 +72,6 @@ Before we dig deeper into the information in the dataset, let us briefly look at
 delay_sum <- ttc_delay %>% 
   summarise(mean_delay = mean(ttc_delay$`Min Delay`, na.rm = TRUE), sd_delay = sd(ttc_delay$`Min Delay`, na.rm = TRUE))
 kable(delay_sum, caption = "Short Statistical Summary of Min Delay") %>% kable_styling(position = "center")
-
 ```
 
 After briefly summarized those two variables, we will closely investigate the relationship between the delayed minutes and the incidents that happened.
