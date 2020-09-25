@@ -51,7 +51,7 @@ ttc_delay<- rbind(jan, fab, mar, april, may, june, july, aug, sep, oct, nov, dec
 # Dataset
 
 ```{r, echo=FALSE, message=FALSE}
-kable(head(ttc_delay, n= 5)) %>% kable_styling(position = "left")
+kable(head(ttc_delay, n= 5)) %>% kable_styling(position = "left") 
 ```
 
 The above dataset is from the City of Toronto's Open Data Database. It delicately records the Toronto Transit Commission (TTC) streetcar system delays, which includes the data from 2014 to the present. Logically, if we wanted to analyze the most recent situation of the TTC delays, we would consider 2020's data. However, due to the current COVID-19 situation, it might produce some inaccurate results. Thus, this article would analyze the 2019 TTC streetcar delay data.
