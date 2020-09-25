@@ -44,7 +44,7 @@ dec <- as.data.frame(ttc_agg$`Dec 2019`)
 colnames(dec) <- c(names)
 
 ttc_delay<- rbind(jan, fab, mar, april, may, june, july, aug, sep, oct, nov, dec)
-                          
+                           
 ```
 
 # Abstract
