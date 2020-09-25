@@ -1,3 +1,3 @@
 # About
 
-This is the  website
+This is a webiste of mine.
