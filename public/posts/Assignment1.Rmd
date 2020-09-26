@@ -47,6 +47,8 @@ ttc_delay<- rbind(jan, fab, mar, april, may, june, july, aug, sep, oct, nov, dec
                           
 ```
 
+You can get the souce code of this post via my github repo: [github repo](https://github.com/frankkhung/my_website/blob/master/content/posts/Assignment1.Rmd)
+
 # Abstract
 
 This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility. 
@@ -133,8 +135,5 @@ Thus, there is a need to look back to the data and check if there were some outl
 
 # Conclusion
 Assuming that the data from 2019, provided by the TTC is correct, we can reasonably suggest that riders can bear with the TTC's delays when it announces "Mechanical Problems." Riders will only need to wait for less than 10 min on average. On the other hand, if TTC announces there will be "Diversions," be aware that there could be some chance that the riders will have to wait for several hours (1.2 hours on average), so please find other forms of commute if possible!
-
-
-
 
 # References
