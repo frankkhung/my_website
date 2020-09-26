@@ -1,5 +1,5 @@
 ---
-title: "The True Reason of Why People Are Waiting For So Long For the Streetcar"
+title: "Should People Wait for the Delayed TTC Streetcars?"
 author: "Chien-Che Hung"
 date: "2020-09-21"
 output: html_document
@@ -14,6 +14,8 @@ output: html_document
 </div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
+{{% tweet "1309771459561127936" %}}
+<p>Other than driving cars in the city, Toronto Transit Commission’s (TTC) public transportation system, including subway, streetcar, and bus, is largely utilized by the residents in Toronto City, regardless they live in downtown or not. As we see from the Twitter posts from the TTC Service Alerts (<span class="citation">@TTCnotices</span>), some random incidents cause delays, no matter the delays are short or long. This post will discuss and analyze the delay times caused by different incidents, with the data provided by the City of Toronto’s Open Data. After receiving the TTC’s delay notifications, the customers could take some actions to get through the delays. Some delay incidents are bearable, but some delay incidents could indicate that the customers have to change to other forms of transportations.</p>
 </div>
 <div id="dataset" class="section level1">
 <h1>Dataset</h1>
@@ -248,8 +250,12 @@ sd_delay
 </div>
 <div id="findings-and-discussions" class="section level1">
 <h1>Findings and Discussions</h1>
-<img src="/posts/Assignment1_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" />
+<p><img src="/posts/Assignment1_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>After finding out there are nine types of incidents in total, we would want to take a closer look at each incident’s frequency. Because [<strong>Incident</strong>] is a categorical variable, a bar-graph would be the most suitable graphing technique. The graph above (<strong>Graph 2</strong>) shows the incidents on the x-axis and the counts on the y-axis in descending order. We can see that delays caused by mechanical errors happened significantly more frequently than other types of incidents.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-5">Table 2: </span>Average Delays of each Incident
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -310,10 +316,10 @@ Late Leaving Garage
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;font-weight: bold;background-color: #D7261E !important;">
 Mechanical
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-weight: bold;background-color: #D7261E !important;">
 8.220907
 </td>
 </tr>
@@ -335,7 +341,14 @@ Utilized Off Route
 </tr>
 </tbody>
 </table>
-<p><img src="/posts/Assignment1_files/figure-html/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/posts/Assignment1_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>With the apparent difference between Mechanical error induced delays and other incident types, we will explore whether the mechanical error caused riders to wait for an extensive amount of time. The table and graph (<strong>Table 2</strong> and <strong>Graph 3</strong>) above show the average delay for each incident in descending order. We can see that the average delay for Mechanical reason is around eight minutes by graphing the average waiting time for the incidents. The delays that were caused by Diversion had the riders waited for an excessive amount of time. Interestingly, the average time difference between Diversion and others were extremely apparent, which had double the delay time than the second-longest delay time (overhead-pantograph).</p>
+<p><img src="/posts/Assignment1_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Thus, there is a need to look back to the data and check if there were some outliers. With the density plot above of delay minutes caused by Diversion, we can see that there were actually a cluster of observations that locates around delaying 125 minutes (approx. 2 hours) and 500 minutes (approx. 8 hours). The only potential outlier would be the one observation that delayed 999 minutes. From the information given, we can suspect two reasons that led to such long delays. First of all, the streetcar line actually stopped for the diversion. The second reason would be other streetcars replaced those delayed streetcars’ shifts until the next time they left the garage. That was when their delay ends. If that was the case, it would be the error from TTC’s data collection process. This could be an extended research topic for the future.</p>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>Assuming that the data from 2019, provided by the TTC is correct, we can reasonably suggest that riders can bear with the TTC’s delays when it announces “Mechanical Problems.” Riders will only need to wait for less than 10 min on average. On the other hand, if TTC announces there will be “Diversions,” be aware that there could be some chance that the riders will have to wait for several hours (1.2 hours on average), so please find other forms of commute if possible!</p>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>

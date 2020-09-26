@@ -1,5 +1,5 @@
 ---
-title: "The True Reason of Why People Are Waiting For So Long For the Streetcar"
+title: "Should People Wait for the Delayed TTC Streetcars?"
 author: "Chien-Che Hung"
 date: "2020-09-21"
 output: html_document
@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r packages, echo=FALSE, message=FALSE}
 library(readxl)
-library(ggplot2) 
+library(ggplot2)
 library(tidyverse)
 library(forcats)
 library(plyr)
@@ -38,17 +38,25 @@ sep <-as.data.frame(ttc_agg$`Sept 2019 `)
 colnames(sep) <- c(names)
 oct <-as.data.frame(ttc_agg$`Oct 2019 `)
 colnames(oct) <- c(names)
-nov <- as.data.frame(ttc_agg$` Nov 2019`) 
+nov <- as.data.frame(ttc_agg$` Nov 2019`)
 colnames(nov) <- c(names)
 dec <- as.data.frame(ttc_agg$`Dec 2019`)
 colnames(dec) <- c(names)
 
 ttc_delay<- rbind(jan, fab, mar, april, may, june, july, aug, sep, oct, nov, dec)
-                           
+                          
 ```
 
 # Abstract
+
+
+
 # Introduction
+
+`r blogdown::shortcode('tweet', '1309771459561127936')`
+
+Other than driving cars in the city, Toronto Transit Commission's (TTC) public transportation system, including subway, streetcar, and bus, is largely utilized by the residents in Toronto City, regardless they live in downtown or not. As we see from the Twitter posts from the TTC Service Alerts (@TTCnotices), some random incidents cause delays, no matter the delays are short or long. This post will discuss and analyze the delay times caused by different incidents, with the data provided by the City of Toronto's Open Data. After receiving the TTC's delay notifications, the customers could take some actions to get through the delays. Some delay incidents are bearable, but some delay incidents could indicate that the customers have to change to other forms of transportations. 
+
 # Dataset
 
 ```{r, echo=FALSE, message=FALSE}
@@ -61,7 +69,8 @@ We can intuitively know what each variable represents from the headings (first f
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
 ggplot(ttc_delay, aes(x = `Min Delay`)) +
-  geom_density()
+  geom_density() +
+  labs(title = "Graph 1: Distriubtion of Minutes Delayed")
 ```
 
 
@@ -80,29 +89,52 @@ After briefly summarized those two variables, we will closely investigate the re
 
 
 # Findings and Discussions
+
 ```{r, echo=FALSE, message=FALSE, fig.align='center'}
 ggplot(ttc_delay, aes(x = forcats::fct_infreq(Incident))) +
   geom_bar(stat = "count") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 60, vjust = 0.6, hjust=0.5)) +
-  labs(title = "Counts for each type of incidents") +
+  labs(title = "Graph 2: Counts for each type of incidents") +
   xlab("Type of Incident")
+```
 
+After finding out there are nine types of incidents in total, we would want to take a closer look at each incident's frequency. Because [**Incident**] is a categorical variable, a bar-graph would be the most suitable graphing technique. The graph above (**Graph 2**) shows the incidents on the x-axis and the counts on the y-axis in descending order. We can see that delays caused by mechanical errors happened significantly more frequently than other types of incidents.
+
+
+
+```{r, echo=FALSE, message=FALSE, fig.align='center'}
 delay_sum <- as.data.frame(aggregate(`Min Delay` ~ Incident, ttc_delay, mean))
 
-
 delay_sum$Incident <- factor(delay_sum$Incident, levels = delay_sum$Incident[order(delay_sum$`Min Delay`, decreasing = TRUE)])
-kable(delay_sum) %>% kable_styling(position = "center")
+kable(delay_sum, caption = "Average Delays of each Incident") %>% kable_styling(position = "center") %>% row_spec(7, bold = T, background = "#D7261E")
 
 delay_sum %>%
   ggplot(aes(x = Incident, y = `Min Delay`)) +
   geom_bar(stat = "identity") + 
-  labs(title = "Average Delay Time According to Incidents") +
+  labs(title = "Graph 3: Average Delay Time According to Incidents") +
   xlab("Type of Incidents") +
   ylab("Average Waiting Time (mins)") +
   theme_light() +
   theme(axis.text.x = element_text(angle = 60, vjust = 0.6, hjust=0.5))
-
 ```
+
+With the apparent difference between Mechanical error induced delays and other incident types, we will explore whether the mechanical error caused riders to wait for an extensive amount of time. The table and graph (**Table 2** and **Graph 3**) above show the average delay for each incident in descending order. We can see that the average delay for Mechanical reason is around eight minutes by graphing the average waiting time for the incidents. The delays that were caused by Diversion had the riders waited for an excessive amount of time. Interestingly, the average time difference between Diversion and others were extremely apparent, which had double the delay time than the second-longest delay time (overhead-pantograph).
+
+```{r, echo=FALSE, message=FALSE, fig.align='center', warning=FALSE}
+diversion <- filter(ttc_delay, Incident == "Diversion")
+ggplot(diversion, aes(x = diversion$`Min Delay`)) +
+  geom_density() +
+  labs (title = "Graph 4: Density of Minutes of Delay Caused by Diversion")+
+  xlab("Minutes Delayed")
+```
+
+Thus, there is a need to look back to the data and check if there were some outliers. With the density plot above of delay minutes caused by Diversion, we can see that there were actually a cluster of observations that locates  around delaying 125 minutes (approx. 2 hours) and 500 minutes (approx. 8 hours). The only potential outlier would be the one observation that delayed 999 minutes. From the information given, we can suspect two reasons that led to such long delays. First of all, the streetcar line actually stopped for the diversion. The second reason would be other streetcars replaced those delayed streetcars' shifts until the next time they left the garage. That was when their delay ends. If that was the case, it would be the error from TTC's data collection process. This could be an extended research topic for the future.
+
+# Conclusion
+Assuming that the data from 2019, provided by the TTC is correct, we can reasonably suggest that riders can bear with the TTC's delays when it announces "Mechanical Problems." Riders will only need to wait for less than 10 min on average. On the other hand, if TTC announces there will be "Diversions," be aware that there could be some chance that the riders will have to wait for several hours (1.2 hours on average), so please find other forms of commute if possible!
+
+
+
 
 # References

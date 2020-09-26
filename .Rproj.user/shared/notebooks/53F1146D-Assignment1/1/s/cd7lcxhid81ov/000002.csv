@@ -1,2 +1,0 @@
-"0","ggplot(ttc_delay, aes(x = `Min Delay`)) +"
-"0","  geom_density()"
