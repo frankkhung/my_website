@@ -50,7 +50,7 @@ You can get the souce code of this post via my github repo: [github repo](https:
 
 # Abstract
 
-This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility. 
+This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the longest delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility. 
 
 # Introduction
 
@@ -61,12 +61,12 @@ Other than driving cars in the city, Toronto Transit Commission's (TTC) public t
 # Dataset
 
 ```{r, echo=FALSE, message=FALSE}
-kable(head(ttc_delay, n= 5)) %>% kable_styling(position = "left") 
+kable(head(ttc_delay, n= 5), caption = "First Five Observations of the TTC Streetcar Delay Data") %>% kable_styling(position = "left") 
 ```
 
 The above dataset is from the City of Toronto's Open Data Database. It delicately records the Toronto Transit Commission (TTC) streetcar system delays, which includes the data from 2014 to the present. Logically, if we wanted to analyze the most recent situation of the TTC delays, we would consider 2020's data. However, due to the current COVID-19 situation, it might produce some inaccurate results. Thus, this article would analyze the 2019 TTC streetcar delay data.
 
-We can intuitively know what each variable represents from the headings (first five observations) of the data. Most importantly, [**Min of Delay**] shows the minutes of delay, and [**Incident**] reports the incidents that caused the delays. These two are the main variables that we will try to investigate closely.
+We can intuitively know what each variable represents from the headings (first five observations, **Table 1**) of the data. Most importantly, [**Min of Delay**] shows the minutes of delay, and [**Incident**] reports the incidents that caused the delays. These two are the main variables that we will try to investigate closely.
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
 ggplot(ttc_delay, aes(x = `Min Delay`)) +
@@ -74,8 +74,8 @@ ggplot(ttc_delay, aes(x = `Min Delay`)) +
   labs(title = "Graph 1: Distriubtion of Minutes Delayed")
 ```
 
+Before we dig deeper into the information in the dataset, let us briefly look at the structure of these two variables, [**Min of Delay**] and [**Incident**]. From the graph of the distribution of [**Min of Delay**], we can see that the delay time is primarily concentrated around 0 minutes, which implies that the delays could be in seconds since the data only contains the delayed rides. Assuming that the delay times are correct, we can see that the average delay time is around 14 minutes with a standard deviation of 34 minutes (Table 2). For the [**Incident**], there are nine types of incidents in total: Mechanical, Investigation, Held by, General Delay, Late Leaving Garage, Emergency Services, Utilized off Route, Diversion, and Overhead-Pantograph.
 
-Before we dig deeper into the information in the dataset, let us briefly look at the structure of these two variables, [**Min of Delay**] and [**Incident**]. From the graph of the distribution of [**Min of Delay**], we can see that the delay time is primarily concentrated around 0 minutes, which implies that the delays could be in seconds since the data only contains the delayed rides. Assuming that the delay times are correct, we can see that the average delay time is around 14 minutes with a standard deviation of 34 minutes. For the [**Incident**], there are nine types of incidents in total: Mechanical, Investigation, Held by, General Delay, Late Leaving Garage, Emergency Services, Utilized off Route, Diversion, and Overhead-Pantograph.
 
 ```{r, echo=FALSE, message=FALSE}
 

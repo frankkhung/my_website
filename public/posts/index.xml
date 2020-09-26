@@ -14,7 +14,7 @@
       
       <guid>/posts/assignment1/</guid>
       <description>You can get the souce code of this post via my github repo: github repo
-Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times.</description>
+Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the longest delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility.</description>
     </item>
     
   </channel>

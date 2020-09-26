@@ -8,7 +8,7 @@
 
     <meta name="author" content="Chien-Che (Frank) Hung">
     <meta name="description" content="You can get the souce code of this post via my github repo: github repo
-Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times.">
+Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the longest delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility.">
     <meta name="keywords" content="blog,developer,personal">
 
     
@@ -18,11 +18,11 @@ Abstract This post talks about the delays caused by different incidents using so
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Should People Wait for the Delayed TTC Streetcars?"/>
 <meta name="twitter:description" content="You can get the souce code of this post via my github repo: github repo
-Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times."/>
+Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the longest delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility."/>
 
     <meta property="og:title" content="Should People Wait for the Delayed TTC Streetcars?" />
 <meta property="og:description" content="You can get the souce code of this post via my github repo: github repo
-Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times." />
+Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the longest delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/assignment1/" />
 <meta property="article:published_time" content="2020-09-21T00:00:00+00:00" />
@@ -160,7 +160,7 @@ Abstract This post talks about the delays caused by different incidents using so
 <p>You can get the souce code of this post via my github repo: <a href="https://github.com/frankkhung/my_website/blob/master/content/posts/Assignment1.Rmd">github repo</a></p>
 <div id="abstract" class="section level1">
 <h1>Abstract</h1>
-<p>This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility.</p>
+<p>This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the longest delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility.</p>
 </div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
@@ -172,6 +172,9 @@ Abstract This post talks about the delays caused by different incidents using so
 <div id="dataset" class="section level1">
 <h1>Dataset</h1>
 <table class="table" style="">
+<caption>
+<span id="tab:unnamed-chunk-1">Table 1: </span>First Five Observations of the TTC Streetcar Delay Data
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -370,12 +373,12 @@ N/B
 </tbody>
 </table>
 <p>The above dataset is from the City of Toronto’s Open Data Database. It delicately records the Toronto Transit Commission (TTC) streetcar system delays, which includes the data from 2014 to the present. Logically, if we wanted to analyze the most recent situation of the TTC delays, we would consider 2020’s data. However, due to the current COVID-19 situation, it might produce some inaccurate results. Thus, this article would analyze the 2019 TTC streetcar delay data.</p>
-<p>We can intuitively know what each variable represents from the headings (first five observations) of the data. Most importantly, [<strong>Min of Delay</strong>] shows the minutes of delay, and [<strong>Incident</strong>] reports the incidents that caused the delays. These two are the main variables that we will try to investigate closely.</p>
+<p>We can intuitively know what each variable represents from the headings (first five observations, <strong>Table 1</strong>) of the data. Most importantly, [<strong>Min of Delay</strong>] shows the minutes of delay, and [<strong>Incident</strong>] reports the incidents that caused the delays. These two are the main variables that we will try to investigate closely.</p>
 <p><img src="/posts/Assignment1_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Before we dig deeper into the information in the dataset, let us briefly look at the structure of these two variables, [<strong>Min of Delay</strong>] and [<strong>Incident</strong>]. From the graph of the distribution of [<strong>Min of Delay</strong>], we can see that the delay time is primarily concentrated around 0 minutes, which implies that the delays could be in seconds since the data only contains the delayed rides. Assuming that the delay times are correct, we can see that the average delay time is around 14 minutes with a standard deviation of 34 minutes. For the [<strong>Incident</strong>], there are nine types of incidents in total: Mechanical, Investigation, Held by, General Delay, Late Leaving Garage, Emergency Services, Utilized off Route, Diversion, and Overhead-Pantograph.</p>
+<p>Before we dig deeper into the information in the dataset, let us briefly look at the structure of these two variables, [<strong>Min of Delay</strong>] and [<strong>Incident</strong>]. From the graph of the distribution of [<strong>Min of Delay</strong>], we can see that the delay time is primarily concentrated around 0 minutes, which implies that the delays could be in seconds since the data only contains the delayed rides. Assuming that the delay times are correct, we can see that the average delay time is around 14 minutes with a standard deviation of 34 minutes (Table 2). For the [<strong>Incident</strong>], there are nine types of incidents in total: Mechanical, Investigation, Held by, General Delay, Late Leaving Garage, Emergency Services, Utilized off Route, Diversion, and Overhead-Pantograph.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-3">Table 1: </span>Short Statistical Summary of Min Delay
+<span id="tab:unnamed-chunk-3">Table 2: </span>Short Statistical Summary of Min Delay
 </caption>
 <thead>
 <tr>
@@ -406,7 +409,7 @@ sd_delay
 <p>After finding out there are nine types of incidents in total, we would want to take a closer look at each incident’s frequency. Because [<strong>Incident</strong>] is a categorical variable, a bar-graph would be the most suitable graphing technique. The graph above (<strong>Graph 2</strong>) shows the incidents on the x-axis and the counts on the y-axis in descending order. We can see that delays caused by mechanical errors happened significantly more frequently than other types of incidents.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-5">Table 2: </span>Average Delays of each Incident
+<span id="tab:unnamed-chunk-5">Table 3: </span>Average Delays of each Incident
 </caption>
 <thead>
 <tr>
