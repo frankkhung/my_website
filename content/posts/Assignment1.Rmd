@@ -120,7 +120,7 @@ delay_sum %>%
   theme(axis.text.x = element_text(angle = 60, vjust = 0.6, hjust=0.5))
 ```
 
-With the conspicious difference in counts between Mechanical error induced delays and other incident types, we will explore whether the mechanical error caused riders to wait for an extensive amount of time. The table and graph (**Table 2** and **Graph 3**) above show the average delay for each incident in descending order. We can see that the average delay for Mechanical reason is around eight minutes after calculating the average waiting time for each incident. The delays that were caused by Diversion had the riders waited for an excessive amount of time. Interestingly, the average time difference between Diversion and others were extremely apparent, which had double the delay time than the second-longest delay time (overhead-pantograph).
+With the conspicious difference in counts between Mechanical error induced delays and other incident types, we will explore whether the mechanical error caused riders to wait for an extensive amount of time. The table and graph (**Table 3** and **Graph 3**) above show the average delay for each incident in descending order. We can see that the average delay for Mechanical reason is around eight minutes after calculating the average waiting time for each incident. The delays that were caused by Diversion had the riders waited for an excessive amount of time. Interestingly, the average time difference between Diversion and others were extremely apparent, which had double the delay time than the second-longest delay time (overhead-pantograph).
 
 ```{r, echo=FALSE, message=FALSE, fig.align='center', warning=FALSE}
 diversion <- filter(ttc_delay, Incident == "Diversion")
