@@ -49,7 +49,7 @@ ttc_delay<- rbind(jan, fab, mar, april, may, june, july, aug, sep, oct, nov, dec
 
 # Abstract
 
-
+This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility. 
 
 # Introduction
 

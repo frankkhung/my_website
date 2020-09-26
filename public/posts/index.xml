@@ -13,8 +13,7 @@
       <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/assignment1/</guid>
-      <description>Abstract  Introduction 337 Islington: Eastbound Detour via Kipling, Finch, and Islington due to a truck on fire.
-&amp;mdash; TTC Service Alerts (@TTCnotices) September 26, 2020  Other than driving cars in the city, Toronto Transit Commission’s (TTC) public transportation system, including subway, streetcar, and bus, is largely utilized by the residents in Toronto City, regardless they live in downtown or not. As we see from the Twitter posts from the TTC Service Alerts (@TTCnotices), some random incidents cause delays, no matter the delays are short or long.</description>
+      <description>Abstract This post talks about the delays caused by different incidents using some data manipulations and data visualization techniques. Specifically, we used bar-charts to graph out detailed delay counts based on Incidents and Incident-Minute relationship. We see that mechanical error induced delays had the most counts, while Diversions had the most extended delay times. With this information and the possible waiting time (average time) for each incident, the TTC customers can change their plans with some flexibility.</description>
     </item>
     
     <item>
